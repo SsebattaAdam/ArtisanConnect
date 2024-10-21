@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+  <!-- Title -->   
+  <title>ArtsConnect| Museum, Art Gallery & Exhibition Website</title>  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}">
+
+  <!-- Font-Awesome (CSS) -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/font-awesome/css/all.min.css' %}">
+
+  <!-- Magnific-Popup (CSS) -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/magnific-popup/magnific-popup.css' %}">
+
+  <!-- Swiper (CSS) -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/swiper/swiper-bundle.min.css' %}">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+  
+
+</head>
+
+<body>
+
+     <!-- ==================== Scroll-Top Area (Start) ==================== -->
+  <a href="#" class="scroll-top">
+    <i class="fa-solid fa-arrow-up-long"></i>
+  </a>
+  <!-- ==================== Scroll-Top Area (End) ==================== -->
+    
+
+
+  <!-- ==================== Header Area (Start) ==================== -->
+  <header class="header">
+
+    <!-- ===== Header-1 Area (Start) ===== -->
+    <div class="header-1">
+
+      <!-- == Contacts == -->
+      <ul class="header-contacts">
+        <li><i class="fa-solid fa-location-dot"></i><span>ArtsConnect</span></li>
+        <li><i class="fa-solid fa-phone"></i><span>+256 755 894 172</span></li>
+        <li><i class="fa-solid fa-envelope"></i><span class="gmail">infor@artisconnect.com</span></li>
+      </ul>             
+
+      <!-- == Social == -->
+      <ul class="social-contacts">
+        <li><a href="#" class="fab fa-facebook-f"></a></li>
+        <li><a href="#" class="fa-brands fa-x-twitter"></a></li>
+        <li><a href="#" class="fab fa-instagram"></a></li>
+        <li><a href="#" class="fab fa-linkedin"></a></li>
+      </ul>
+
+    </div>
+    <!-- ===== Header-1 Area (End) ===== -->
+
+    <!-- ===== Header-2 Area (Start) ===== -->
+    <div class="header-2">
+
+      <!-- == Logo == -->
+      <a class="logo" href="{%url 'home' %}">
+        <img src="{% static '/assets/images/Logo/Logo.png' %}" alt="logo">
+      </a>
+
+      <div class="container">
+
+            </div>
+
+    </div>
+    <!-- ===== Header-2 Area (End) ===== -->
+
+    <!-- ===== Mobile Menu Area (Start) ===== -->
+  
+    <!-- ===== Mobile Menu Area (End) ===== -->
+
+  </header>
+  <!-- ==================== Header Area (End) ==================== -->  
+   
+
+
+
+  {% block content %}
+
+  
+  {% endblock %}
+  <!-- ==================== Footer Area (Start) ==================== -->
+  
+  <!-- ==================== Footer Area (End) ==================== -->
+
+
+   
+  
+    <!-- Jquery -->
+    <script src="{% static 'assets/vendors/jquery/jquery.min.js' %}"></script>
+  
+    <!-- Swiper (JS) -->
+    <script src="{% static 'assets/vendors/swiper/swiper-bundle.min.js' %}"></script>
+  
+    <!-- Magnific-Popup JS -->
+    <script src="{% static 'assets/vendors/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+  
+    <!-- Isotope (JS) -->
+    <script src="{% static 'assets/vendors/isotope/isotope.pkgd.min.js' %}"></script>
+  
+    <!-- Custom Script Files -->
+    <script src="{% static 'assets/js/script.js' %}"></script> <!-- Additional website functionality -->
+    <script src="{% static 'assets/js/nav-link-toggler.js' %}"></script> <!-- Mobile navigation link toggling -->
+    <script src="{% static 'assets/js/newsletter.js' %}"></script> <!-- Script to handle newsletter subscription functionality -->
+    <script src="{% static 'assets/js/home-slider.js' %}"></script> <!-- Dynamic Home Slider -->
+    <script src="{% static 'assets/js/counter-up.js' %}"></script> <!-- Numerical counting animation -->
+    <script src="{% static 'assets/js/service-slider.js' %}"></script> <!-- Service slider control -->
+    <script src="{% static 'assets/js/portfolio.js' %}"></script>  <!-- Projects functionality, including image filtering -->
+    <script src="{% static 'assets/js/testi-slider.js' %}"></script> <!-- Interactive Testimonial Slider -->
+    <script src="{% static 'assets/js/partner-slider.js' %}"></script> <!-- Interactive Partner Slider -->
+  
+  </body>
+  </html>

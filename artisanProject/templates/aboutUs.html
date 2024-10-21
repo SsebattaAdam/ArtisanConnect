@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title%} about us
+{%endblock%} {% load static%} {% block content %}
+<!-- ==================== About Area (Start) ==================== -->
+<section class="about">
+
+  <!-- About Image -->
+  <div class="image">
+    <div class="sub-image up">
+      <img src="{% static 'images/About/About-1.jpg' %}" alt="About-Image1">
+    </div>
+    <div class="sub-image">
+      <img src="{% static 'images/About/About-2.jpg' %}" alt="About-Image2">
+    </div>
+    <div class="sub-image up">
+      <img src="{% static 'images/About/About-3.jpg' %}" alt="About-Image3">
+    </div>
+    <div class="sub-image">
+      <img src="{% static 'images/About/About-4.jpg' %}" alt="About-Image4">
+    </div>
+  </div>
+
+  <!-- Introduction Content -->
+  <div class="content">
+
+    <div class="heading">
+      <div class="sub"><span>About Us</span><i class="fa-solid fa-building-columns"></i></div> <!-- Sub Heading -->
+      <h2>Discover Our Museum's Rich Cultural Legacy</h2> <!-- Main Heading -->
+    </div>
+
+    <!-- Description -->
+    <p>Welcome to Mystique Museum, where history comes alive through art, culture, and heritage. We are dedicated to preserving and showcasing the diverse narratives that define our collective human experience.</p>
+
+    <!-- Key Features -->
+    <ul class="about-features">
+      <li><i class="fa-solid fa-building-columns"></i><span>Diverse Exhibit Collections</span></li> <!-- Feature 1 -->
+      <li><i class="fa-solid fa-building-columns"></i><span>Engaging Educational Programs</span></li> <!-- Feature 2 -->
+      <li><i class="fa-solid fa-building-columns"></i><span>Cultural Events and Workshops</span></li> <!-- Feature 3 -->
+      <li><i class="fa-solid fa-building-columns"></i><span>Inspiring Artistic Displays</span></li> <!-- Feature 4 -->
+    </ul>
+
+    
+
+  </div>
+
+</section>    
+<!-- ==================== About Area (End) ==================== -->
+{% endblock %}
