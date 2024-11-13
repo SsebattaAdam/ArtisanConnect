@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    shop
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<form method="get" class="o_searchbar_form" action="/shop">
+    <div role="search" class="input-group" style="max-width: 500px; margin: 0 auto; display: flex;"> <!-- Ensure flex container for proper alignment -->
+        <!-- Search Input -->
+        <input type="search" name="search" class="form-control search-query" placeholder="Search products..." aria-label="Search Products" style="height: 50px; border-top-right-radius: 0; border-bottom-right-radius: 0; flex-grow: 1;"> <!-- Flex-grow ensures input takes full width -->
+        <!-- Search Button with Icon at the End -->
+        <button type="submit" aria-label="Search" class="btn btn-light" style="height: 50px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+            <i class="icon fa-solid fa-magnifying-glass"></i> <!-- Search icon -->
+        </button>
+    </div>
+    <!-- Hidden Input for Sorting -->
+    <input name="order" type="hidden" value="name asc">
+</form>
+
+
+
+{% endblock %}
