@@ -3,47 +3,34 @@
 
 
 
-  <!-- ==================== Page-Title (Start) ==================== -->
- 
-  <!-- ==================== Page-Title (End) ==================== -->
-    
-
-     
   
-  <!-- ==================== Login Area (Start) ==================== -->
   <section class="login">
 
-    <form class="account-form" method="post" action="{% url 'login' %}"> <!-- Add method and action -->
+    <form class="account-form" method="post" action="{% url 'login' %}"> 
       {% csrf_token %}
-      <h3>login</h3> <!-- Form Heading -->
+      <h3>login</h3> 
       
       <input type="email" name="email" placeholder="enter your email" id="email" class="box" required> <!-- Email Input -->
       <input type="password" name="password" placeholder="enter your password" id="password" class="box" required> <!-- Password Input -->
   
-      <!-- Remember Me Checkbox and Forgot Password Link -->
       <div class="info">
-          <!-- Remember Me Checkbox -->
           <div class="checkbox-label">
               <input type="checkbox" checked="checked" id="remember-me">
               <label for="remember-me">remember me</label>
               <div class="checkbox-indicator"></div>
           </div>
   
-          <!-- Forgot Password Link -->
           <div class="forgot">
               <a class="link" href="{% url 'forgot_password' %}">forgot password?</a>
           </div>
       </div>
   
-      <!-- Login Button -->
       <button type="submit" class="btn" name="login" id="login-btn">login</button>
   
-      <!-- Registration Link -->
       <p>don't have an account? <a class="link" href="{% url 'get_started' %}">register</a></p>
   </form>
   
 
   </section> 
-  <!-- ==================== Login Area (End) ==================== -->
     
 {% endblock %}

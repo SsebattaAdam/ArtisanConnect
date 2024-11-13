@@ -6152,6 +6152,7 @@ input[type="range"]::-moz-range-thumb{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    border: 1px solid transparent;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
