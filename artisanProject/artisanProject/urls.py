@@ -1,3 +1,5 @@
+from django.contrib import admin
+from django.urls import include, path
 """
 URL configuration for artisanProject project.
 
@@ -16,8 +18,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('artisanApp.urls')),  # URL for the artisanApp app
+    path('artisan/', include('artisanApp.urls')),
 ]

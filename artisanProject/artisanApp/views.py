@@ -7,6 +7,7 @@ from .forms import ArtisanRegistrationForm, ProductForm
 from .models import Artisan, Product, Order
 from django.contrib import messages
 
+
 def register_artisan(request):
     if request.method == 'POST':
         form = ArtisanRegistrationForm(request.POST)
@@ -26,7 +27,7 @@ def register_artisan(request):
             return redirect('artisan_dashboard')
     else:
         form = ArtisanRegistrationForm()
-    return render(request, 'artisan/register.html', {'form': form})
+    return render(request, 'Artisan/Registration.html', {'form': form})
 
 @login_required
 def artisan_dashboard(request):
