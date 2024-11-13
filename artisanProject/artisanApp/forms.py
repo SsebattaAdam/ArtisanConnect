@@ -1,17 +1,25 @@
+# forms.py
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import Artisan, Product
 
-class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+class ArtisanRegistrationForm(forms.ModelForm):
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    confirm_password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = CustomUser
-        fields = ['username', 'email', 'password1', 'password2']  # No user_type here
+        model = Artisan
+        fields = ['business_name', 'description', 'phone_number', 'address']
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.user_type = 'client'  # Set the default user type to client
-        if commit:
-            user.save()
-        return user
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
+        if password and confirm_password and password != confirm_password:
+            raise forms.ValidationError("Passwords do not match")
+        return cleaned_data
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'description', 'price', 'stock', 'image']

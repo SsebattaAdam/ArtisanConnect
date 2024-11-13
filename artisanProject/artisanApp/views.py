@@ -1,66 +1,61 @@
-
 # views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 from django.contrib.auth.models import User
-from .forms import RegistrationForm
-from .models import CustomUser
-from django.contrib.auth import login
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from .forms import RegistrationForm
-
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from .forms import RegistrationForm
-
-# Create your views here.
-# myapp/views.py
-
-
-def home(request):
-    return render(request, 'base.html') 
-
-
-def home2(request):
-    return render(request, 'base2.html') 
-
-def about_us(request):
-    return render(request, 'aboutUs.html')
-
-def get_started(request):
-    return render(request, 'getStarted.html')
-from django.contrib.auth import authenticate, login as auth_login
-from django.shortcuts import render, redirect
+from .forms import ArtisanRegistrationForm, ProductForm
+from .models import Artisan, Product, Order
 from django.contrib import messages
 
-def login(request):
+def register_artisan(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        # Authenticate the user using username (or email) and password
-        user = authenticate(request, username=email, password=password)
-        
-        if user is not None:
-            auth_login(request, user)  # Log the user in
-            return redirect('home')  # Redirect to home page after successful login
-        else:
-            messages.error(request, "Invalid email or password.")  # Add an error message if authentication fails
-            
-    return render(request, 'login.html')  # Render the login page if not a POST request
-
-def forgot_password(request):
-    return render(request, 'forgotPassword.html')
-
-
-def get_started(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = ArtisanRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Save the form, user_type is already set to 'client'
-            return redirect('home')  # Redirect the user to the home page
+            # Create User
+            user = User.objects.create_user(
+                username=form.cleaned_data['email'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password']
+            )
+            # Create Artisan
+            artisan = form.save(commit=False)
+            artisan.user = user
+            artisan.save()
+            login(request, user)
+            messages.success(request, 'Registration successful!')
+            return redirect('artisan_dashboard')
     else:
-        form = RegistrationForm()
-    
-    return render(request, 'getStarted.html', {'form': form})
+        form = ArtisanRegistrationForm()
+    return render(request, 'artisan/register.html', {'form': form})
 
+@login_required
+def artisan_dashboard(request):
+    artisan = get_object_or_404(Artisan, user=request.user)
+    products = artisan.products.all()
+    orders = artisan.orders.all()
+    context = {
+        'artisan': artisan,
+        'products': products,
+        'orders': orders
+    }
+    return render(request, 'artisan/dashboard.html', context)
+
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.artisan = request.user.artisan
+            product.save()
+            messages.success(request, 'Product added successfully!')
+            return redirect('artisan_dashboard')
+    else:
+        form = ProductForm()
+    return render(request, 'artisan/add_product.html', {'form': form})
+
+@login_required
+def manage_orders(request):
+    artisan = request.user.artisan
+    orders = Order.objects.filter(artisan=artisan).order_by('-created_at')
+    return render(request, 'artisan/orders.html', {'orders': orders})
