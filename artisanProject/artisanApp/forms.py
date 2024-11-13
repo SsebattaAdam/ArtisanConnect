@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
 from .models import Artisan, Product
+from django.contrib.auth.forms import AuthenticationForm
 
 class ArtisanRegistrationForm(forms.ModelForm):
     email = forms.EmailField()

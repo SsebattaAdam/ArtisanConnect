@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Dashboard</title>
+    <link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Artisan Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="{% static 'images/profile-placeholder.png' %}" alt="Profile Picture">
+                <p>{{ artisan.user.username }}</p>
+                <span>Rating: 4.0 ★★★★☆</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Uploaded Photo Section -->
+            <section class="uploaded-photo">
+                <h3>Uploaded Products</h3>
+                <div class="product-gallery">
+                    {% for product in products %}
+                        <div class="product-card">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            <p>{{ product.name }}</p>
+                            <span>Price: ${{ product.price }}</span>
+                        </div>
+                    {% empty %}
+                        <p>No products uploaded yet.</p>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Search Results Section -->
+            <section class="orders-section">
+                <h3>Orders</h3>
+                <div class="order-list">
+                    {% for order in orders %}
+                        <div class="order-card">
+                            <p>Order #{{ order.id }}</p>
+                            <p>Status: {{ order.status }}</p>
+                            <p>Total: ${{ order.total_amount }}</p>
+                        </div>
+                    {% empty %}
+                        <p>No orders yet.</p>
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
