@@ -1,0 +1,112 @@
+{% extends "base2.html" %}
+
+{% block title %}
+    shop
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+  <!-- ==================== Page-Title (Start) ==================== -->
+  <div class="page-title">
+
+
+
+  </div>
+  <!-- ==================== Page-Title (End) ==================== -->
+
+
+
+ 
+<section class="shop">
+
+    
+       
+        <!-- ===== Category Area (End) ===== -->
+    
+        
+         
+    
+    
+      <!-- ========== Shop Sidebar Area (End) ========== -->
+    
+      <div class="shop-container">
+      <!-- ===== Shop Header (Start) ===== -->
+      <div class="intro">
+    
+        <!-- Showing Products Count -->
+        <div class="showing">showing 8 of 10 products</div>
+    
+        <!-- Display Styles -->
+     <!-- Display Styles -->
+     <div class="styles">
+        <a href="{% url 'shop_grid'%}" class="fas fa-th"></a>
+        <a href="{% url 'shop_list'%}" class="fas fa-list"></a>               
+      </div>
+    
+        <!-- Sorting Type -->
+        <div class="sorting-type">
+    
+          <!-- Sorting Label -->
+          <label for="sort">sort by:</label>
+    
+          <!-- Sorting Options -->
+          <select name="sort" id="sort">
+            <option value="default">default</option>
+            <option value="name, A to Z">name, A to Z</option>
+            <option value="mname, Z to A">name, Z to A</option>
+            <option value="price, low to high">price, low to high</option>
+            <option value="price, high to low">price, high to low</option>
+          </select>
+    
+        </div>
+    
+      </div> 
+      <!-- ===== Shop Header (End) ===== -->
+    
+      <!-- Product List -->
+      <div class="product-container list">
+        {% for product in products %}
+        <div class="product-item">
+            <!-- Product Image and Options -->
+            <div class="image">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="options">
+                    <a href="Wishlist.html" class="icon"><i class="far fa-heart"></i></a>
+                    <a href="{% url 'cart'%}" class="icon"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+            <!-- Product Content -->
+            <div class="content mt-3">
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <a href=""><h3>{{ product.name }}</h3></a>
+                <p>{{ product.description }}</p>
+                <div class="price">UGX {{ product.price }} <span>UGX {{ product.price|floatformat:2 }}</span></div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No products available yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+      </div>
+    </div>
+    </section>
+    
+    <script src="{% static 'assets/js/quantity-controls.js' %}"></script>
+
+ 
+{% endblock %}
+

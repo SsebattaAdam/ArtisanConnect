@@ -7,16 +7,62 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      var webSdkScript = document.createElement("script");
+  
+      // fetch the latest version of the Web-SDK from the CDN
+      webSdkScript.src =
+        "https://unpkg.com/@grafana/faro-web-sdk@^1.4.0/dist/bundle/faro-web-sdk.iife.js";
+  
+      webSdkScript.onload = () => {
+        window.GrafanaFaroWebSdk.initializeFaro({
+          url: "https://faro-collector-prod-us-east-0.grafana.net/collect/609b5304b20bec94b3d5ee74a5f1a187",
+          app: {
+            name: "Artisan ",
+            version: "1.0.0",
+            environment: "production",
+          },
+          
+        });
+  
+  
+        // Load instrumentations at the onLoad event of the web-SDK and after the above configuration.
+        // This is important because we need to ensure that the Web-SDK has been loaded and initialized before we add further instruments!
+        var webTracingScript = document.createElement("script");
+  
+        // fetch the latest version of the Web Tracing package from the CDN
+        webTracingScript.src =
+          "https://unpkg.com/@grafana/faro-web-tracing@^1.4.0/dist/bundle/faro-web-tracing.iife.js";
+  
+        // Initialize, configure (if necessary) and add the the new instrumentation to the already loaded and configured Web-SDK.
+        webTracingScript.onload = () => {
+          window.GrafanaFaroWebSdk.faro.instrumentations.add(
+            new window.GrafanaFaroWebTracing.TracingInstrumentation()
+          );
+        };
+  
+        // Append the Web Tracing script script tag to the HTML page
+        document.head.appendChild(webTracingScript);
+      };
+  
+      // Append the Web-SDK script script tag to the HTML page
+      document.head.appendChild(webSdkScript);
+    })();
+  </script>
+  
 
     
   <!-- Title -->   
-  <title>ArtsConnect| Museum, Art Gallery & Exhibition Website</title>  
+  <title>ArtisConnect| Museum, Art Gallery & Exhibition Website</title>  
 
-  <!-- Favicon -->
+  <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}">
+  
 
   <!-- Font-Awesome (CSS) -->
   <link rel="stylesheet" href="{% static 'assets/vendors/font-awesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <!-- Magnific-Popup (CSS) -->
   <link rel="stylesheet" href="{% static 'assets/vendors/magnific-popup/magnific-popup.css' %}">
@@ -28,7 +74,50 @@
   <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
   <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
 
-  
+  <style>
+    /* Custom styles */
+    .navbar-custom {
+        background-color: #007bff;
+    }
+    .navbar-custom .nav-link, .navbar-custom .navbar-brand {
+        color: #fff;
+    }
+    .container {
+        margin-top: 30px;
+    }
+    .product-card {
+        margin: 15px 0;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        transition: transform 0.2s;
+    }
+    .product-card:hover {
+        transform: scale(1.02);
+    }
+    .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .product-title {
+        font-weight: bold;
+        margin-top: 10px;
+        font-size: 1.1rem;
+    }
+    .product-description {
+        font-size: 0.9rem;
+        color: #555;
+    }
+    .product-price {
+        color: green;
+        font-weight: 600;
+    }
+    
+</style>
 
 </head>
 
@@ -50,13 +139,36 @@
 
       <!-- == Contacts == -->
       <ul class="header-contacts">
-        <li><i class="fa-solid fa-location-dot"></i><span>ArtsConnect</span></li>
+        <li><i class="fa-solid fa-location-dot"></i><span>ArtisConnect</span></li>
         <li><i class="fa-solid fa-phone"></i><span>+256 755 894 172</span></li>
-        <li><i class="fa-solid fa-envelope"></i><span class="gmail">infor@artisconnect.com</span></li>
+        <li><i class="fa-solid fa-envelope"></i><span class="gmail">info@artisconnect.com</span></li>
       </ul>             
 
       <!-- == Social == -->
       <ul class="social-contacts">
+        <!--<li>
+          <a href="#" class="fas fa-shopping-cart">
+            <span id="cart-count">0</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="fas fa-heart">
+            <span id="favorites-count">0</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="fas fa-shopping-cart">
+            <span id="cart-count">0</span>
+          <span class="small">View Cart</span>
+          
+          </a>
+        </li>
+        <li>
+          <a href="#" class="fas fa-heart">
+            <span id="favorites-count">0</span>
+          </a>
+        </li>-->
         <li><a href="#" class="fab fa-facebook-f"></a></li>
         <li><a href="#" class="fa-brands fa-x-twitter"></a></li>
         <li><a href="#" class="fab fa-instagram"></a></li>
@@ -113,22 +225,16 @@
 
        
           <div class="dropdown-menu">
-            <button class="nav-btn">shop</button>
+            <button class="nav-btn">shop</button> 
             <div class="dropdown-content">
-              <a href="pages/Shop/Shop-Grid.html">shop grid</a>
-              <a href="pages/Shop/Shop-List.html">shop list</a>
-              <a href="pages/Shop/Product-Single.html">product Single</a>
-              <a href="pages/Shop/Wishlist.html">wishlist</a>
-              <a href="pages/Shop/Cart.html">cart</a>
-              <a href="pages/Shop/Checkout.html">checkout</a>
-              <a href="pages/Shop/Login.html">login</a>
-              <a href="pages/Shop/Register.html">register</a>
-              <a href="pages/Shop/Reset-Password.html">forgot Password</a>
+              <a href="{% url 'shop' %}">Shop</a>
+              <a href="{% url 'login_seller' %}">Add Product</a>
+              <a href="{% url 'forgot_password' %}">forgot Password</a>
+             
             </div>
           </div>
 
-          <a class="nav-btn" href="pages/Contact/Contact.html">contact</a>
-        
+          <a class="nav-btn" href="{% url 'contact' %}">contact</a>        
         </nav> 
 
         <!-- == Icon Container == -->
@@ -270,57 +376,7 @@
      <!-- ==================== Home-Slider Area (Start) ==================== -->  
   <section class="home">
 
-    <!-- Home Slider -->
-    <div class="swiper-container home-slider">
-      <div class="swiper-wrapper">
-  
-        <!-- Home Slide-1 -->
-        <div class="swiper-slide home-item">
-          <img src="assets/images/Home/Home-1.jpg" alt="Home Image"> <!-- Slide Image -->
-          <div class="content">
-            <div class="text">
-              <h5>May 1, 2024 - May 24, 2024</h5> <!-- Slide Date -->
-              <h3>Garden of Serenity: A Botanical Exploration</h3> <!-- Slide Heading -->
-              <a href="pages/Exhibition/Exhibition-Single.html" class="btn">View Details</a> <!-- Detail Page Button -->
-            </div>
-          </div>
-        </div>
-  
-        <!-- Home Slide-2 -->
-        <div class="swiper-slide home-item">
-          <img src="assets/images/Home/Home-2.jpg" alt="Home Image"> <!-- Slide Image -->
-          <div class="content">
-            <div class="text">
-              <h5>May 1, 2024 - May 24, 2024</h5> <!-- Slide Date -->
-              <h3>Lost Worlds: Archaeological Discoveries</h3> <!-- Slide Heading -->
-              <a href="pages/Exhibition/Exhibition-Single.html" class="btn">View Details</a> <!-- Detail Page Button -->
-            </div>
-          </div>
-        </div>
-  
-        <!-- Home Slide-3 -->
-        <div class="swiper-slide home-item">
-          <img src="assets/images/Home/Home-3.jpg" alt="Home Image"> <!-- Slide Image -->
-          <div class="content">
-            <div class="text">
-              <h5>May 1, 2024 - May 24, 2024</h5> <!-- Slide Date -->
-              <h3>Artistry in Motion: Modern Sculpture Exhibition</h3> <!-- Slide Heading -->
-              <a href="pages/Exhibition/Exhibition-Single.html" class="btn">View Details</a> <!-- Detail Page Button -->
-            </div>
-          </div>
-        </div>
-  
-      </div>
-  
-      <!-- Home Slider Pagination -->
-      <div class="swiper-pagination swiper-pagination1"></div>
-  
-      <!-- Home Slider Navigation arrows -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-  
-    </div>
-  
+   
   </section>
   <!-- ==================== Home-Slider Area (End) ==================== -->     
 
@@ -329,6 +385,74 @@
 
 
   {% block content %}
+  <section class="shop">
+
+    
+       
+    <!-- ===== Category Area (End) ===== -->
+
+    
+     
+
+
+  <!-- ========== Shop Sidebar Area (End) ========== -->
+
+  <div class="shop-container">
+  <!-- ===== Shop Header (Start) ===== -->
+  <div class="intro">
+
+    <!-- Showing Products Count -->
+   
+
+    <!-- Display Styles -->
+ <!-- Display Styles -->
+ 
+
+    <!-- Sorting Type -->
+   
+
+  </div> 
+  <!-- ===== Shop Header (End) ===== -->
+
+  <!-- Product List -->
+  <div class="product-container grid">
+    {% for product in products %}
+    <div class="product-item">
+        <!-- Product Image and Options -->
+        <div class="image">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="options">
+                <a href="{% url 'wishlist'%}" class="icon"><i class="far fa-heart"></i></a>
+                <a href="{% url 'cart'%}" class="icon"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </div>
+        </div>
+        <!-- Product Content -->
+        <div class="content mt-3">
+            <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <a href=""><h3>{{ product.name }}</h3></a>
+            <p>{{ product.description }}</p>
+            <div class="price">UGX {{ product.price }} <span>UGX {{ product.price|floatformat:2 }}</span></div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+        <p>No products available yet.</p>
+    </div>
+    {% endfor %}
+</div>
+  </div>
+</div>
+
+
+</section>
+
 
   
   {% endblock %}
@@ -357,6 +481,7 @@
   
         <!-- Social Media Links -->
         <div class="social">
+          
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
@@ -416,7 +541,11 @@
   <!-- ==================== Footer Area (End) ==================== -->
 
 
-   
+  <script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this product? This action cannot be undone.");
+    }
+  </script>
   
     <!-- Jquery -->
     <script src="{% static 'assets/vendors/jquery/jquery.min.js' %}"></script>
@@ -440,6 +569,9 @@
     <script src="{% static 'assets/js/portfolio.js' %}"></script>  <!-- Projects functionality, including image filtering -->
     <script src="{% static 'assets/js/testi-slider.js' %}"></script> <!-- Interactive Testimonial Slider -->
     <script src="{% static 'assets/js/partner-slider.js' %}"></script> <!-- Interactive Partner Slider -->
+
+    <!--Chatbot-->
+    <script src="//code.tidio.co/vr0gmaohinarqloibaup4ihxz7vr0djx.js" async></script>
   
   </body>
   </html>

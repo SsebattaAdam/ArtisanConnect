@@ -1,16 +1,6 @@
 {% extends "base2.html" %} {% block title%} Get started by Creating an acount
 {%endblock%} {% load static%} {% block content %}
 
-
-
-  <!-- ==================== Page-Title (Start) ==================== -->
- 
-  <!-- ==================== Page-Title (End) ==================== -->
-    
-
-     
-  
-  <!-- ==================== Login Area (Start) ==================== -->
   <section class="login">
 
     <form class="account-form" method="post" action="{% url 'login' %}"> <!-- Add method and action -->
@@ -34,7 +24,7 @@
               <a class="link" href="{% url 'forgot_password' %}">forgot password?</a>
           </div>
       </div>
-  
+   
       <!-- Login Button -->
       <button type="submit" class="btn" name="login" id="login-btn">login</button>
   
@@ -43,7 +33,5 @@
   </form>
   
 
-  </section> 
-  <!-- ==================== Login Area (End) ==================== -->
-    
+  </section>     
 {% endblock %}

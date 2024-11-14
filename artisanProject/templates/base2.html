@@ -18,10 +18,62 @@
   <link rel="icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}">
 
   <!-- Font-Awesome (CSS) -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/font-awesome/css/all.min.css' %}"> 
+  
+  <!-- Custom Stylesheets --> 
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}">
+
+  <!-- Font-Awesome (CSS) -->
   <link rel="stylesheet" href="{% static 'assets/vendors/font-awesome/css/all.min.css' %}">
 
   <!-- Magnific-Popup (CSS) -->
   <link rel="stylesheet" href="{% static 'assets/vendors/magnific-popup/magnific-popup.css' %}">
+  <script>
+    (function () {
+      var webSdkScript = document.createElement("script");
+  
+      // fetch the latest version of the Web-SDK from the CDN
+      webSdkScript.src =
+        "https://unpkg.com/@grafana/faro-web-sdk@^1.4.0/dist/bundle/faro-web-sdk.iife.js";
+  
+      webSdkScript.onload = () => {
+        window.GrafanaFaroWebSdk.initializeFaro({
+          url: "https://faro-collector-prod-us-east-0.grafana.net/collect/609b5304b20bec94b3d5ee74a5f1a187",
+          app: {
+            name: "Artisan ",
+            version: "1.0.0",
+            environment: "production",
+          },
+          
+        });
+  
+  
+        // Load instrumentations at the onLoad event of the web-SDK and after the above configuration.
+        // This is important because we need to ensure that the Web-SDK has been loaded and initialized before we add further instruments!
+        var webTracingScript = document.createElement("script");
+  
+        // fetch the latest version of the Web Tracing package from the CDN
+        webTracingScript.src =
+          "https://unpkg.com/@grafana/faro-web-tracing@^1.4.0/dist/bundle/faro-web-tracing.iife.js";
+  
+        // Initialize, configure (if necessary) and add the the new instrumentation to the already loaded and configured Web-SDK.
+        webTracingScript.onload = () => {
+          window.GrafanaFaroWebSdk.faro.instrumentations.add(
+            new window.GrafanaFaroWebTracing.TracingInstrumentation()
+          );
+        };
+  
+        // Append the Web Tracing script script tag to the HTML page
+        document.head.appendChild(webTracingScript);
+      };
+  
+      // Append the Web-SDK script script tag to the HTML page
+      document.head.appendChild(webSdkScript);
+    })();
+  </script>
+  
 
   <!-- Swiper (CSS) -->
   <link rel="stylesheet" href="{% static 'assets/vendors/swiper/swiper-bundle.min.css' %}">
@@ -29,8 +81,6 @@
   <!-- Custom Stylesheets -->
   <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
   <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
-
-  
 
 </head>
 
@@ -59,10 +109,22 @@
 
       <!-- == Social == -->
       <ul class="social-contacts">
-        <li><a href="#" class="fab fa-facebook-f"></a></li>
+
+        <li>
+          <a href="{% url 'cart'%}" class="fas fa-shopping-cart">
+            <span id="cart-count">0</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'wishlist'%}" class="fas fa-heart">
+            <span id="favorites-count">0</span>
+          </a>
+        </li>
+        <!--<li><a href="#" class="fab fa-facebook-f"></a></li>
         <li><a href="#" class="fa-brands fa-x-twitter"></a></li>
         <li><a href="#" class="fab fa-instagram"></a></li>
-        <li><a href="#" class="fab fa-linkedin"></a></li>
+        <li><a href="#" class="fab fa-linkedin"></a></li>-->
       </ul>
 
     </div>
@@ -73,7 +135,7 @@
 
       <!-- == Logo == -->
       <a class="logo" href="{%url 'home' %}">
-        <img src="{% static '/assets/images/Logo/Logo.png' %}" alt="logo">
+        <!--<img src="{% static '/assets/images/Logo/Logo.png' %}" alt="logo">-->
       </a>
 
       <div class="container">
@@ -126,6 +188,15 @@
     <script src="{% static 'assets/js/portfolio.js' %}"></script>  <!-- Projects functionality, including image filtering -->
     <script src="{% static 'assets/js/testi-slider.js' %}"></script> <!-- Interactive Testimonial Slider -->
     <script src="{% static 'assets/js/partner-slider.js' %}"></script> <!-- Interactive Partner Slider -->
+    <!-- Jquery -->
+<script src="{% static 'assets/vendors/jquery/jquery.min.js' %}"></script>
+
+<!-- Custom Script Files -->
+<script src="{% static 'assets/js/script.js' %}"></script> <!-- Custom JavaScript file with additional website functionality. -->
+<script src="{% static 'assets/js/nav-link-toggler.js' %}"></script> <!-- Manages navigation link toggling (e.g., hamburger menu) for mobile devices -->
+<script src="{% static 'assets/js/newsletter.js' %}"></script> <!-- Script to handle newsletter subscription functionality -->
+<script src="{% static 'assets/js/Price-Filter.js' %}"></script> <!-- Handles the price filtering functionality -->
+
   
   </body>
   </html>

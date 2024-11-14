@@ -1,0 +1,117 @@
+<!-- product_list.html -->
+<p>Welcome, {{ request.user.username }}! You are logged in and can add products here.</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        .navbar-custom {
+            background-color: #007bff;
+        }
+        .navbar-custom .nav-link, .navbar-custom .navbar-brand {
+            color: #fff;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .product-card {
+            margin: 15px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-title {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+        .product-description {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .product-price {
+            color: green;
+            font-weight: 600;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">Artisan Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="btn btn-outline-light me-2" href="{% url 'add_product' %}">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-light" href="">View Orders</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Product List -->
+    <div class="row" id="product-list">
+        {% for product in products %}
+        <div class="col-md-4 mb-3">
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                <h5 class="product-title mt-3">{{ product.name }}</h5>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price">UGX {{ product.price }}</p>
+    
+                <!-- Button container with better spacing -->
+                <div class="d-flex justify-content-between mt-2">
+                    <a href="{% url 'edit_product' product.id %}" class="btn btn-warning btn-sm me-2">Edit</a>
+    
+                    <!-- Delete Button with Confirmation -->
+                    <form action="{% url 'delete_product' product.id %}" method="POST" onsubmit="return confirmDelete()" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No products available yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Confirmation Script -->
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this product? This action cannot be undone.");
+        }
+    </script>
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

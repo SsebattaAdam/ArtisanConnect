@@ -1,0 +1,245 @@
+{% extends "base2.html" %}
+
+{% block title %}
+    shop
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+   
+
+  <!-- ==================== Wishlist Area (Start) ==================== -->
+  <section class="wishlist">
+
+    <div class="wishlist-container">
+
+      <div class="container">
+
+        <div class="shoplist-title">
+          <h3 class="product-heading">product</h3>
+          <h3>price</h3>
+          <h3>status</h3>
+          <h3>activity</h3>
+        </div>
+
+        <div class="box-container">
+  
+          <!-- Wishlist Item 1 -->
+          <div class="wishlist-item">
+            <div class="box product">
+              <img src="../../media/products/Product-1.jpg" alt="Product-Image">
+              <div class="name">Diamond Brooch</div>
+            </div>
+            <div class="box price">UGX 98000</div>
+            <div class="box status in">in Stock</div>
+            <div class="box action">
+              <a href="#" class="icon delete fas fa-trash-alt" onclick="showDeleteModal(event)"></a>
+              <a href="{% url 'cart'%}" class="icon cart fas fa-shopping-cart"></a>
+            </div>
+          </div>
+  
+          <!-- Wishlist Item 2 -->
+          <div class="wishlist-item">
+            <div class="box product">
+              <img src="../../media/products/Product-2.jpg" alt="Product-Image">
+              <div class="name">Gemstone Ring</div>
+            </div>
+            <div class="box price">UGX 100000</div>
+            <div class="box status in">in Stock</div>
+            <div class="box action">
+              <a href="#" class="icon delete fas fa-trash-alt" onclick="showDeleteModal(event)"></a>
+              <a href="{% url 'cart'%}" class="icon cart fas fa-shopping-cart"></a>
+            </div>
+          </div>
+  
+          <!-- Wishlist Item 3 -->
+          <div class="wishlist-item">
+            <div class="box product">
+              <img src="../../media/products/Product-3.jpg" alt="Product-Image">
+              <div class="name">Wall Paintings</div>
+            </div>
+            <div class="box price">UGX 500000</div>
+            <div class="box status out">out of Stock</div>
+            <div class="box action">
+              <a href="#" class="icon delete fas fa-trash-alt" onclick="showDeleteModal(event)"></a>
+              <a href="{% url 'cart'%}" class="icon cart fas fa-shopping-cart"></a>
+            </div>
+          </div>
+  
+          <!-- Wishlist Item 4 -->
+          <div class="wishlist-item">
+            <div class="box product">
+              <img src="../../media/products/Product-4.jpg" alt="Product-Image">
+              <div class="name">Gold Necklace</div>
+            </div>
+            <div class="box price">UGX 70000</div>
+            <div class="box status out">out of Stock</div>
+            <div class="box action">
+              <a href="#" class="icon delete fas fa-trash-alt" onclick="showDeleteModal(event)"></a>
+              <a href="{% url 'cart'%}" class="icon cart fas fa-shopping-cart"></a>
+            </div>
+          </div>
+  
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- ==================== Wishlist Area (End) ==================== -->
+
+  <!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h4>Are you sure you want to delete this item?</h4>
+    <div class="modal-actions">
+      <button id="confirmDelete" class="btn">Yes, Delete</button>
+      <button id="cancelDelete" class="btn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Jquery -->
+<script src="../../assets/vendors/jquery/jquery.min.js"></script> 
+
+<!-- Custom Script Files -->
+<script src="../../assets/js/script.js"></script>
+<script src="../../assets/js/nav-link-toggler.js"></script> 
+<script src="../../assets/js/newsletter.js"></script> 
+
+<!-- JavaScript for handling the delete modal -->
+<script>
+  const deleteModal = document.getElementById("deleteModal");
+  const confirmDeleteBtn = document.getElementById("confirmDelete");
+  const cancelDeleteBtn = document.getElementById("cancelDelete");
+  let itemToDelete;
+
+  // Function to show the modal
+  function showDeleteModal(event) {
+    event.preventDefault();
+    deleteModal.style.display = "flex";
+    itemToDelete = event.target; // Capture the item to delete (if needed for further handling)
+  }
+
+  // Function to hide the modal
+  function hideDeleteModal() {
+    deleteModal.style.display = "none";
+  }
+
+  // Event listeners for delete and cancel actions
+  confirmDeleteBtn.addEventListener("click", () => {
+    // Add your delete logic here
+    alert("Item deleted!"); // Replace with your actual delete functionality
+    hideDeleteModal();
+  });
+
+  cancelDeleteBtn.addEventListener("click", hideDeleteModal);
+
+  // Close the modal when clicking outside of it
+  window.onclick = function(event) {
+    if (event.target === deleteModal) {
+      hideDeleteModal();
+    }
+  };
+</script>
+
+     
+
+  <!-- ==================== Footer Area (Start) ==================== -->
+  <footer class="footer">
+
+    <div class="box-container">
+  
+      <!-- Museum Information & Social Media Links -->
+      <div class="footer-item">
+  
+        <!-- Museum Logo -->
+        <a class="logo" href="../../index-2.html">
+          <img src="../../assets/images/Logo/Logo.png" alt="Museum Logo">
+        </a>
+  
+        <!-- Description -->
+        <p>Explore the wonders of our exhibitions and collections, where art and history come alive.</p>
+  
+        <!-- Contact Information -->
+        <div class="info connect">
+          <p><i class="fas fa-phone"></i><span>+123-456-7890</span></p>
+          <p><i class="fas fa-envelope"></i><span class="gmail">info@mystiquemuseum.com</span></p>
+          <p><i class="fas fa-map-marker-alt"></i><span>Mystique Museum</span></p>
+        </div>
+  
+        <!-- Social Media Links -->
+        <div class="social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+  
+      </div>
+  
+      <!-- Museum Services -->
+      <div class="footer-item">
+        <h2>Our Services</h2>
+        <div class="info links">
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Guided Tours</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Educational Workshops</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Special Events</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Virtual Tours</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Membership Benefits</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Educational Resources</a></p>
+        </div>
+      </div>
+  
+      <!-- Quick Links -->
+      <div class="footer-item">
+        <h2>Quick Links</h2>
+        <div class="info links">
+          <p><i class="fa-solid fa-building-columns"></i><a href="../About/About.html">About Us</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Exhibition/Exhibitions.html">Exhibitions</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Collection/Collections.html">Collections</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Blog/Blog-Grid.html">Blogs</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="Shop-Grid.html">Shop</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Contact/Contact.html">Contact Us</a></p>
+        </div>
+      </div>
+  
+      <!-- Newsletter Subscription -->
+      <div class="footer-item">
+        <h2>Newsletter</h2>
+        <p>Stay updated and informed about upcoming exhibitions, events, and special offers by subscribing to our newsletter.</p>
+        <form class="dark-form" method="post" id="newsletter-form-2">
+          <div class="input-field">
+            <label for="news-email-2" class="fas fa-envelope"></label>
+            <input type="email" id="news-email-2" name="email" class="box" placeholder="Your email address" required>
+          </div>
+          <button type="submit" class="btn" name="submit" id="submit-2">Subscribe</button>
+          <span class="alert" id="msg-2"></span>
+        </form>
+      </div>
+  
+    </div>
+  
+    <!-- Museum Name and Copyright -->
+    <div class="content">
+      <p>Designed By AS_Designs | All Rights Reserved</p>
+    </div>
+  
+  </footer>  
+  <!-- ==================== Footer Area (End) ==================== -->
+
+
+
+  <!-- Jquery -->
+  <script src="../../assets/vendors/jquery/jquery.min.js"></script> 
+
+  <!-- Custom Script Files -->
+  <script src="../../assets/js/script.js"></script> <!-- Custom JavaScript file with additional website functionality. -->
+  <script src="../../assets/js/nav-link-toggler.js"></script> <!-- Manages navigation link toggling (e.g., hamburger menu) for mobile devices -->
+  <script src="../../assets/js/newsletter.js"></script> <!-- Script to handle newsletter subscription functionality -->
+
+
+  {% endblock %}
+
