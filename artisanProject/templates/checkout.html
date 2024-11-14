@@ -1,0 +1,393 @@
+{% extends "base2.html" %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <!-- ===== Header-2 Area (End) ===== -->
+
+    <!-- ===== Mobile Menu Area (Start) ===== -->
+    <div class="mobile-menu"> 
+    
+      <nav class="mobile-navbar">
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <a class="nav-btn" href="../../index-2.html">home</a> </div>
+        </div>   
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <div class="nav-btn">about</div> <i class="fas fa-plus"></i> </div>
+          <div class="sub-nav-link">
+            <a href="../About/About.html">about us</a>
+            <a href="../About/Team.html">Team</a>
+            <a href="../About/Team-Single.html">Team Single</a>
+            <a href="../About/Testimonials.html">testimonials</a>
+            <a href="../About/FAQs.html">FAQs</a>
+          </div>
+        </div> 
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <div class="nav-btn">pages</div> <i class="fas fa-plus"></i> </div>
+          <div class="sub-nav-link">
+            <a href="../Pages/Gallery.html">Gallery</a>
+            <div class="nav-link">
+              <div class="main-nav-link"> <div class="nav-btn">Event</div> <i class="fas fa-plus"></i> </div>
+              <div class="sub-nav-link">
+                <a href="../Pages/Events.html">Events</a>
+                <a href="../Pages/Event-Single.html">Events Single</a>
+              </div>
+            </div> 
+            <div class="nav-link">
+              <div class="main-nav-link"> <div class="nav-btn">Career</div> <i class="fas fa-plus"></i> </div>
+              <div class="sub-nav-link">
+                <a href="../Pages/Careers.html">Careers</a>
+                <a href="../Pages/Career-Single.html">Career Single</a>
+              </div>
+            </div> 
+            <a href="../Pages/Membership.html">Membership</a>
+            <div class="nav-link">
+              <div class="main-nav-link"> <div class="nav-btn">Service</div> <i class="fas fa-plus"></i> </div>
+              <div class="sub-nav-link">
+                <a href="../Pages/Services.html">Services</a>
+                <a href="../Pages/Service-Single.html">Service Single</a>
+              </div>
+            </div> 
+            <div class="nav-link">
+              <div class="main-nav-link"> <div class="nav-btn">Portfolio</div> <i class="fas fa-plus"></i> </div>
+              <div class="sub-nav-link">
+                <a href="../Pages/Portfolio.html">Portfolio</a>
+                <a href="../Pages/Portfolio-Single.html">Portfolio Single</a>
+              </div>
+            </div> 
+            <div class="nav-link">
+              <div class="main-nav-link"> <div class="nav-btn">Donation</div> <i class="fas fa-plus"></i> </div>
+              <div class="sub-nav-link">
+                <a href="../Pages/Donations.html">Donations</a>
+                <a href="../Pages/Donation-Single.html">Donation Single</a>
+              </div>
+            </div> 
+            <a href="../Pages/Donate.html">Donate</a>
+            <a href="../Pages/Tickets.html">Tickets</a>
+            <a href="../Pages/Partners.html">Partners</a>
+          </div>
+        </div> 
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <div class="nav-btn">Exhibition</div> <i class="fas fa-plus"></i> </div>
+          <div class="sub-nav-link">
+            <a href="../Exhibition/Exhibitions.html">Exhibitions</a>
+            <a href="../Exhibition/Exhibition-Single.html">Exhibition Single</a>
+          </div>
+        </div> 
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <div class="nav-btn">Collection</div> <i class="fas fa-plus"></i> </div>
+          <div class="sub-nav-link">
+            <a href="../Collection/Collection-Category.html">Collection Category</a>
+            <a href="../Collection/Collections.html">Collections</a>
+            <a href="../Collection/Collection-Single.html">Collection Single</a>
+          </div>
+        </div> 
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <div class="nav-btn">blog</div> <i class="fas fa-plus"></i> </div>
+          <div class="sub-nav-link">
+            <a href="../Blog/Blog-Grid.html">blogs grid</a>
+            <a href="../Blog/Blog-List.html">blogs list</a>
+            <a href="../Blog/Blog-Single.html">blog Single</a>
+          </div>
+        </div> 
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <div class="nav-btn">Shop</div> <i class="fas fa-plus"></i> </div>
+          <div class="sub-nav-link">
+            <a href="Shop-Grid.html">shop grid</a>
+            <a href="Shop-List.html">shop list</a>
+            <a href="Product-Single.html">product Single</a>
+            <a href="Wishlist.html">wishlist</a>
+            <a href="Cart.html">cart</a>
+            <a href="Checkout.html">checkout</a>
+            <a href="Login.html">login</a>
+            <a href="Register.html">register</a>
+            <a href="Reset-Password.html">forgot Password</a>
+          </div>
+        </div> 
+
+        <div class="nav-link">
+          <div class="main-nav-link"> <a class="nav-btn" href="../Contact/Contact.html">contact</a> </div>
+        </div>  
+
+      </nav> 
+    
+    </div>
+    <!-- ===== Mobile Menu Area (End) ===== -->
+
+  </header>
+  <!-- ==================== Header Area (End) ==================== -->  
+
+   
+  <!-- ==================== Checkout Area (Start) ==================== -->
+  <section>
+
+    <form action="#" class="checkout">
+
+      <div class="box-1">
+
+        <!-- ========== Billing-Address Area (Start) ========== -->
+        <div class="billing address checkout-item">
+
+          <div class="heading"> 
+            <h2>billing address</h2> 
+          </div>
+
+          <div class="form">
+
+            <!-- First and Last name input -->
+            <div class="input-box">
+              <input type="text" name="first-name" placeholder="first name" id="b-first-name" class="box" required>
+              <input type="text" name="last-name" placeholder="last name" id="b-last-name" class="box" required>
+            </div>
+
+            <!-- Company input -->
+            <div class="input-box">
+              <input type="text" name="company" placeholder="company" id="b-company" class="box" required>
+            </div>
+
+            <!-- Country input -->
+            <div class="input-box">
+              <input type="text" name="country" placeholder="country" id="b-country" class="box" required>
+            </div>
+
+            <!-- Address input -->
+            <div class="input-box">
+              <input type="text" name="address" placeholder="address" id="b-address" class="box" required>
+            </div>
+            
+            <!-- City and ZIP input -->
+            <div class="input-box">
+              <input type="text" name="city" placeholder="town/city" id="b-city" class="box" required>
+              <input type="text" name="zip" placeholder="postcode/ZIP" id="b-zip" class="box" required>
+            </div>
+
+            <!-- Phone and Email input -->
+            <div class="input-box">
+              <input type="number" name="number" placeholder="phone no" id="b-number" class="box" required>
+              <input type="email" name="email" placeholder="email address" id="b-email" class="box" required>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- ========== Billing-Address Area (End) ========== -->
+
+        
+
+        <!-- ========== Payment-Method Area (Start) ========== -->
+        <div class="payment-methods checkout-item">
+
+          <div class="heading"> 
+            <h2>payment method</h2> 
+          </div>
+          
+          <div class="content">
+        
+            <!-- Payment Method: Direct Bank Transfer -->
+            <div class="payment">
+
+              <input id="direct-bank-transfer" name="payment" type="radio" checked>
+              <label for="direct-bank-transfer" class="radio-label">direct bank transfer</label>
+
+              <!-- Payment Method Content -->
+              <div class="payment-body active">
+                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have our account.</p>
+              </div>
+
+            </div>
+
+            <!-- Payment Method: Cash On Delivery -->
+            <div class="payment">
+
+              <input id="cash-on-delivery" name="payment" type="radio"> <!-- Payment Method Radio Button -->
+              <label for="cash-on-delivery" class="radio-label">cash on delivery</label> <!-- Payment Method Label -->
+
+              <!-- Payment Method Content -->
+              <div class="payment-body">
+                <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+              </div>
+
+            </div>
+
+            <!-- Payment Method: Paypal -->
+            <div class="payment">
+
+              <input id="paypal" name="payment" type="radio"> <!-- Payment Method Radio Button -->
+              <label for="paypal" class="radio-label">paypal</label> <!-- Payment Method Label -->
+      
+              <!-- Payment Method Content -->
+              <div class="payment-body">
+                <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- ========== Payment-Method Area (End) ========== -->
+
+        <!-- ========== Cart-Total Area (Start) ========== -->
+        <div class="shop-summary checkout-item">
+
+          <div class="heading"> 
+            <h2>cart total</h2> 
+          </div>
+        
+          <div class="summary-list">
+        
+            <!-- Subtotal -->
+            <div class="summary-item">
+              <div class="name summary-box">sub total</div> 
+              <div class="value summary-box">$300.00</div> 
+            </div>
+        
+            <!-- Delivery Fee -->
+            <div class="summary-item">
+              <div class="name summary-box">delivery fee</div> 
+              <div class="value summary-box">$30.00</div> 
+            </div>
+        
+            <!-- Discount -->
+            <div class="summary-item">
+              <div class="name summary-box">discount</div> 
+              <div class="value summary-box">$60.00</div> 
+            </div>
+        
+            <!-- Tax -->
+            <div class="summary-item">
+              <div class="name summary-box">tax</div> 
+              <div class="value summary-box">$30.00</div> 
+            </div> 
+        
+            <!-- Total -->
+            <div class="summary-item"> 
+              <div class="name summary-box">total</div>
+              <div class="value summary-box">$300.00</div> 
+            </div>
+        
+          </div>
+        
+        </div>
+        
+        <!-- ========== Cart-Total Area (End) ========== -->
+
+        <button type="submit" class="btn">place order</button> <!-- Place Order Button -->
+
+      </div>
+
+    </form>
+
+  </section>
+  <!-- ==================== Checkout Area (End) ==================== -->
+
+
+
+  <!-- ==================== Footer Area (Start) ==================== -->
+  <footer class="footer">
+
+    <div class="box-container">
+  
+      <!-- Museum Information & Social Media Links -->
+      <div class="footer-item">
+  
+        <!-- Museum Logo -->
+        <a class="logo" href="../../index-2.html">
+          <img src="../../assets/images/Logo/Logo.png" alt="Museum Logo">
+        </a>
+  
+        <!-- Description -->
+        <p>Explore the wonders of our exhibitions and collections, where art and history come alive.</p>
+  
+        <!-- Contact Information -->
+        <div class="info connect">
+          <p><i class="fas fa-phone"></i><span>+123-456-7890</span></p>
+          <p><i class="fas fa-envelope"></i><span class="gmail">info@mystiquemuseum.com</span></p>
+          <p><i class="fas fa-map-marker-alt"></i><span>Mystique Museum</span></p>
+        </div>
+  
+        <!-- Social Media Links -->
+        <div class="social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+  
+      </div>
+  
+      <!-- Museum Services -->
+      <div class="footer-item">
+        <h2>Our Services</h2>
+        <div class="info links">
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Guided Tours</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Educational Workshops</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Special Events</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Virtual Tours</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Membership Benefits</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Pages/Service-Single.html">Educational Resources</a></p>
+        </div>
+      </div>
+  
+      <!-- Quick Links -->
+      <div class="footer-item">
+        <h2>Quick Links</h2>
+        <div class="info links">
+          <p><i class="fa-solid fa-building-columns"></i><a href="../About/About.html">About Us</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Exhibition/Exhibitions.html">Exhibitions</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Collection/Collections.html">Collections</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Blog/Blog-Grid.html">Blogs</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="Shop-Grid.html">Shop</a></p>
+          <p><i class="fa-solid fa-building-columns"></i><a href="../Contact/Contact.html">Contact Us</a></p>
+        </div>
+      </div>
+  
+      <!-- Newsletter Subscription -->
+      <div class="footer-item">
+        <h2>Newsletter</h2>
+        <p>Stay updated and informed about upcoming exhibitions, events, and special offers by subscribing to our newsletter.</p>
+        <form class="dark-form" method="post" id="newsletter-form-2">
+          <div class="input-field">
+            <label for="news-email-2" class="fas fa-envelope"></label>
+            <input type="email" id="news-email-2" name="email" class="box" placeholder="Your email address" required>
+          </div>
+          <button type="submit" class="btn" name="submit" id="submit-2">Subscribe</button>
+          <span class="alert" id="msg-2"></span>
+        </form>
+      </div>
+  
+    </div>
+  
+    <!-- Museum Name and Copyright -->
+    <div class="content">
+      <p>Designed By AS_Designs | All Rights Reserved</p>
+    </div>
+  
+  </footer>    
+  <!-- ==================== Footer Area (End) ==================== -->
+
+
+ 
+  <!-- Jquery -->
+  <script src="../../assets/vendors/jquery/jquery.min.js"></script>
+
+  <!-- Custom Script Files -->
+  <script src="../../assets/js/script.js"></script> <!-- Custom JavaScript file with additional website functionality. -->
+  <script src="../../assets/js/nav-link-toggler.js"></script> <!-- Manages navigation link toggling (e.g., hamburger menu) for mobile devices -->
+  <script src="../../assets/js/newsletter.js"></script> <!-- Script to handle newsletter subscription functionality -->
+  <script src="../../assets/js/payment-method.js"></script> <!-- Handles website's payment method functionality -->
+
+
+  {% endblock %}
+

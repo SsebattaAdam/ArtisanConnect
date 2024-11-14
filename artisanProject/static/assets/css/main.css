@@ -301,8 +301,7 @@ img{
 
 /*----- 4- Page Title CSS -----*/
 .page-title{
-    background: -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("../images/PageTitle/pageTitle.jpg");
-    background:         linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("../images/PageTitle/pageTitle.jpg");
+
     background-repeat: no-repeat;  
     background-size: cover;
     background-position: center;
@@ -315,10 +314,10 @@ img{
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    gap: 1.5rem;
+   
     padding: 0rem 5%;
     padding-top: 8rem;
-    min-height: 40rem;
+    
 }
 
 .page-title .title{
@@ -444,7 +443,15 @@ img{
             justify-content: flex-end;
     gap: 1rem;
     list-style-type: none;
+    margin: 0;
 }
+
+.header .social-contacts li {
+    display: inline-block;
+    position: relative; /* This is necessary for absolute positioning of the badge */
+}
+
+
 
 .header .social-contacts li a{
     height: 3rem;
@@ -460,11 +467,544 @@ img{
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    text-decoration: none;
+    color: #ffffff; /* Default color for the icon */
+    font-size: 20px; /* Adjust icon size */
+    position: relative;
 }
 
 .header .social-contacts li a:hover{
     color: var(--secondary-color);
 }
+
+.social-contacts .fas.fa-shopping-cart {
+    border: none;
+    position: relative;
+    left: -25px;
+}
+
+#cart-count, #favorites-count {
+    position: absolute;           /* Allow positioning relative to the cart icon */
+    top: -5px;                   /* Adjust to move the number above the cart */
+    right: -9px;                /* Move to the right side */
+    background-color: black;      /* Background color for the cart number */
+    color: white;                 /* Text color */
+    border-radius: 50%;           /* Make the badge circular */
+    width: 20px;                  /* Set equal width and height for a circle */
+    height: 20px;                 /* Set equal width and height for a circle */
+    text-align: center;           /* Center the text horizontally */
+    line-height: 20px;            /* Center the text vertically (equal to height) */
+    font-size: 0.8em;             /* Adjust text size as needed */
+}
+
+
+/*Submit button contact form*/
+.btn {
+    background-color: #4CAF50;  /* Green background */
+    color: white;               /* White text */
+    padding: 12px 24px;         /* Padding around the text */
+    font-size: 16px;            /* Font size */
+    font-weight: bold;          /* Bold text */
+    border: none;               /* Remove borders */
+    border-radius: 8px;         /* Rounded corners */
+    cursor: pointer;            /* Pointer cursor on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+.btn:hover {
+    background-color: #45a049;  /* Darker green on hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.btn:active {
+    background-color: #3e8e41;  /* Even darker green when clicked */
+    transform: translateY(0px); /* Reset the lift on click */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+}
+
+
+
+.social-contacts .fas.fa-shopping-cart {
+    border: none;
+    position: relative;
+    left: -25px;
+}
+
+#cart-count, #favorites-count {
+    position: absolute;           /* Allow positioning relative to the cart icon */
+    top: -5px;                   /* Adjust to move the number above the cart */
+    right: -9px;                /* Move to the right side */
+    background-color: black;      /* Background color for the cart number */
+    color: white;                 /* Text color */
+    border-radius: 50%;           /* Make the badge circular */
+    width: 20px;                  /* Set equal width and height for a circle */
+    height: 20px;                 /* Set equal width and height for a circle */
+    text-align: center;           /* Center the text horizontally */
+    line-height: 20px;            /* Center the text vertically (equal to height) */
+    font-size: 0.8em;             /* Adjust text size as needed */
+}
+
+.small {
+    font-size: 0.7em;          /* You can adjust this as needed */
+    margin-left: 10px;         /* Space between the cart icon and 'View Cart' text */
+    vertical-align: right;    /* Aligns the text vertically with the cart */
+    color: #ffffff;               /* Text color */
+}
+
+/* Adjusted form control and button for alignment */
+.o_searchbar_form .form-control {
+    font-size: 18px;
+    padding: 10px 12px;
+    border-radius: 30px 0 0 30px; /* Rounded on the left, square on the right */
+    border: 1px solid #ccc;
+}
+
+.o_searchbar_form .btn-light {
+    background-color: #f8f9fa;
+    border-radius: 0 30px 30px 0; /* Rounded on the right, square on the left */
+    border: 1px solid #ccc;
+    font-size: 18px;
+    padding: 0 15px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.o_searchbar_form .fa-magnifying-glass {
+    font-size: 22px;
+}
+
+.o_searchbar_form {
+    display: flex;
+    justify-content: left;
+    max-width: 600px; /* Limit the width */
+    margin: 0 auto;
+}
+
+/* Container */
+#wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.progress-wizard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd; /* Adds a line to give structure */
+}
+
+/* Background line styling */
+.progress-wizard::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #ddd;
+    z-index: 0;
+}
+
+/* Step styling */
+.progress-step {
+    text-align: center;
+    text-decoration: none;
+    color: #aaa; /* Default color for disabled steps */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+    pointer-events: none; /* Disabled steps are not clickable */
+}
+
+/* Circle styling */
+.progress-step .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid #aaa; /* Default border color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Label styling */
+.progress-step .label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.progress-step.active .label {
+    font-weight: bold;
+    color: #6b4423; /* Label color for active step */
+}
+
+.disabled .circle,
+.disabled .label {
+    color: #ddd; /* Grey out color for disabled steps */
+    border-color: #ddd;
+}
+
+/* Active step styling */
+.progress-step.active .circle,
+.progress-step:not(.disabled):hover .circle {
+    border-color: #6b4423; /* Highlight border for active and hover steps */
+    background-color: #6b4423; /* Fill color for active and hover steps */
+    color: #fff; /* Text color for active and hover steps */
+}
+
+/* Disabled step styling */
+.progress-step.disabled .circle {
+    color: #888;
+    background-color: #f8f9fa;
+    border-color: #ddd;
+}
+
+
+
+
+/* Product Table */
+/* Styling for the cart table */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.shopping-cart{
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden; 
+    background-color: var(--white);
+    border-radius: var(--border-radius-3);
+    -webkit-box-shadow: var(--box-shadow);
+            box-shadow: var(--box-shadow);
+}
+
+.shopping-cart::-webkit-scrollbar{
+    height: 0.8rem;
+}
+
+.cart-item{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 1rem 0rem;
+    gap: 3rem;
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+}
+
+.cart-item:last-child{
+    border: none;
+}
+
+.cart-item .box{
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 15rem;
+        flex: 1 1 15rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.cart-item .product{
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 25rem; 
+        flex: 1 1 25rem;  
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: left;
+    gap: 1.5rem;
+}
+
+.cart-item img{
+    height: 8rem;
+    width: 8rem;
+    background-color:#f7f7f7;
+    border-radius: var(--border-radius-3);
+}
+
+.cart-item .name{
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.cart-item .price,
+.cart-item .total{
+    color: var(--grey);
+}
+
+.cart-item .icon{
+    font-size: 2rem;
+    cursor: pointer;
+    color: red;
+}
+
+.cart-item .icon:hover{
+    color: var(--main-color);
+}
+
+
+.cart-table th, .cart-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.cart-table th {
+    background-color: #f7f7f7;
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cart-table td {
+    color: #333;
+}
+
+.cart-table .product img {
+    max-width: 60px;
+    border-radius: 4px;
+}
+
+.cart-table .quantity input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.cart-table .action a {
+    color: #d9534f; /* red trash icon color */
+    text-decoration: none;
+}
+
+.cart-table .action a:hover {
+    color: #c9302c;
+}
+
+/* Styling for empty cart message */
+.empty-cart {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+
+
+/* Quantity Controls */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn {
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Equal width and height for square shape */
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd; /* Add a border if needed */
+    background-color: #f9f9f9; /* Optional: light background color */
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.quantity-btn:hover {
+    background-color: #e0e0e0; /* Slightly darker background on hover */
+}
+
+.quantity-controls .quantity-input {
+    width: 3rem;              /* Adjust input width */
+    padding: 0.25rem;         /* Reduce padding in input */
+    font-size: 1.5rem;        /* Adjust font size in input */
+    text-align: center;       /* Center text */
+    border: 1px solid #ddd;   /* Add border for consistent look */
+    margin: 0 5px;            /* Spacing between buttons and input */
+}
+
+
+
+
+
+/* Order Summary */
+.cart-summary .card {
+        border: none; /* Removes any border around the card */
+        box-shadow: none; /* Removes any shadow effect */
+}
+
+.cart-summary .card-title {
+        font-weight: bold;
+}
+
+.cart-summary .table {
+    width: 100%;
+    margin: 0;
+}
+
+.cart-summary .table td {
+    padding: 8px;
+    font-size: 16px;
+    color: #555;
+}
+
+.cart-summary .table .text-end {
+        text-align: right;
+}
+
+.cart-summary .table .text-center {
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.quantity-controls .quantity-btn {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+.checkout-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--main-color); /* Green background */
+    color: white; /* Text color */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.2s ease-in-out; /* Smooth transition effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Hover effect */
+.checkout-btn:hover {
+    background-color: var(--accent-color); 
+    transform: translateY(-2px); /* Lift the button on hover */
+}
+
+/* Focus effect for accessibility */
+.checkout-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.6); /* Focus ring */
+}
+
+/* Add a smooth animation on hover */
+.checkout-btn:active {
+    transform: translateY(2px); /* Slight press effect */
+}
+
+/* Page numbers*/
+
+.pages-no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .pages-no .container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pages-no .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .pages-no .item:hover {
+    background-color: #f4f4f4;
+    transform: scale(1.1);
+  }
+  
+  .pages-no .previous, .pages-no .next {
+    font-size: 20px;
+    color: #007bff;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 10px 12px;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .pages-no .previous:hover, .pages-no .next:hover {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.2);
+  }
+  
+  .pages-no .numbers {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .pages-no .numbers .item {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 16px;
+  }
+  
+  .pages-no .numbers .item.active {
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .pages-no .numbers .item:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+  }
+  
+  .pages-no .numbers .item:focus {
+    outline: none;
+  }
+
+  
+  
 
 .header .header-2{
     display: -webkit-box;
@@ -1300,6 +1840,8 @@ input:-webkit-autofill:active {
 4- Tags
 */
 
+
+
 .sidebar{
     -webkit-box-flex: 1;
     -ms-flex: 1 1 28rem; 
@@ -1492,6 +2034,7 @@ input:-webkit-autofill:active {
 .home{ 
     padding: 0;
     position: relative;
+    background-color: #000;
 } 
   
 .home-slider{ 
@@ -5914,6 +6457,33 @@ input[type="range"]::-moz-range-thumb{
     color: var(--secondary-color);
 }
 
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures the modal is on top */
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .modal-actions .btn {
+    margin: 10px;
+  }
+  
+
 /*----- 5- Cart  ------*/
 .shopping-cart{
     margin-bottom: 2rem;
@@ -5927,6 +6497,7 @@ input[type="range"]::-moz-range-thumb{
 
 .cart .container{
     min-width: 90rem;
+    margin-top: auto;
 }
 
 .shopping-cart::-webkit-scrollbar{
@@ -6028,57 +6599,167 @@ input[type="range"]::-moz-range-thumb{
 1- Payment Method
 2- Cart Total
 */
-
-.checkout{
-    display: -webkit-box;
-    display: -ms-flexbox;
+.checkout {
     display: flex;
-    -ms-flex-wrap: wrap; 
-        flex-wrap: wrap;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Spread items across the container */
+    gap: 1rem; /* Space between items */
+    padding: 1rem; /* Padding to prevent content from touching the edges */
+    width: 100%; /* Make sure the container takes up the full width of the screen */
+    max-width: 100%; /* Remove any maximum width constraint */
 }
 
-.checkout .heading{
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    -ms-grid-row-align: flex-start;
+.checkout .heading {
     align-items: flex-start;
 }
 
-.checkout h2{
-    font-size: 3.5rem;
+.checkout h2 {
+    font-size: 2rem; /* Smaller heading font size */
+    margin-bottom: 1rem; /* Reduced space below the heading */
 }
 
-.checkout h2:before{
-    left: 0;
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+.checkout .box-1, .checkout .box-2 {
+    flex: 1 1 48%; /* Adjust the width for each box to allow more space */
+    padding: 1rem; /* Reduced padding */
 }
 
-.checkout .box-1{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 55rem;
-        flex: 1 1 55rem;  
-}
-
-.checkout .box-2{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 35rem;
-        flex: 1 1 35rem;
-}
-
-.checkout-item{
-    margin-bottom: 1.5rem;
-    padding: 2rem;
+.checkout-item {
+    margin-bottom: 1rem; /* Reduced margin between items */
+    padding: 1rem; /* Reduced padding */
     background-color: var(--white);
     border-radius: var(--border-radius-3);
-    -webkit-box-shadow: var(--box-shadow);
-            box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow);
 }
 
-.checkout .box-1 .checkout-item:last-child{
-    margin-bottom: 0;   
+.checkout .box-1 .checkout-item:last-child, 
+.checkout .box-2 .checkout-item:last-child {
+    margin-bottom: 0; /* Remove margin for the last item */
 }
+
+/* -- 1- Payment Method -- */
+.payment-methods .payment{
+    margin-bottom: 1.5rem;
+}
+
+.payment-methods .payment label{
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.payment-body{ 
+    display: none;
+}
+
+.payment-body.active{
+    display: block;
+}
+
+.payment-methods .payment .payment-body p{
+    font-size: 1.4rem;
+    padding-top: 1rem;
+}
+
+/* Cart-Total Area Styling */
+.shop-summary {
+    flex: 1 1 48%; /* Make it take up 48% of the container */
+    padding: 1.5rem; /* Padding around the cart summary */
+    background-color: var(--white); /* Optional: Add background */
+    border-radius: var(--border-radius-3); /* Optional: Rounded corners */
+    box-shadow: var(--box-shadow); /* Optional: Add a shadow */
+}
+
+.shop-summary .heading {
+    margin-bottom: 1rem;
+}
+
+.shop-summary h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color); /* Heading color */
+}
+
+.summary-list {
+    font-size: 1.4rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.summary-box {
+    padding: 0.5rem 1rem;
+}
+
+.summary-item .name {
+    font-weight: 500;
+}
+
+.summary-item .value {
+    font-weight: 700;
+}
+
+.checkout .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem; /* Add some space above the button */
+}
+
+.checkout .btn {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius-3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout .btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Flexbox Container for Adjacent Layout */
+.checkout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ensure there is space between the elements */
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.payment-methods, .shop-summary {
+    flex: 1 1 48%; /* Each section takes up 48% of the container width */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .payment-methods, .shop-summary {
+        flex: 1 1 100%; /* Stack the sections on smaller screens */
+    }
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .checkout .box-1, .checkout .box-2 {
+        flex: 1 1 100%; /* Stack on mobile screens */
+        max-width: 100%;
+    }
+    
+    .checkout h2 {
+        font-size: 1.5rem; /* Adjust heading size for smaller screens */
+    }
+}
+
 
 /*-- 1- Payment Method --*/
 .payment-methods .payment{
@@ -6196,16 +6877,15 @@ input[type="range"]::-moz-range-thumb{
     margin-top: 3rem;
     border-radius: var(--border-radius-3);
 }
-
-.contact .contact-info .info-item i{
+.contact .contact-info .info-item i {
     position: absolute;
     top: 0;
     right: 10%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
     height: 7rem;
     width: 7rem;
-    border-radius: var(--border-radius-3);
+    border-radius: 50%; /* Makes the container circular */
     font-size: 3rem;
     color: var(--white);
     background-color: var(--main-color);
@@ -6219,6 +6899,7 @@ input[type="range"]::-moz-range-thumb{
     -ms-flex-align: center;
     align-items: center;
 }
+
 
 .contact .contact-info .info-item h3{
     font-size: 3rem;

@@ -1,0 +1,88 @@
+{% extends "base2.html" %}
+
+{% block title %}
+    shop
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Cart Section -->
+<section class="cart">
+  <div class="shopping-cart">
+    <div class="container">
+      
+      <!-- Cart Table -->
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items">
+          {% if cart_items %}
+              {% for item in cart_items %}
+                  <tr data-item-id="{{ item.id }}">
+                      <td><img src="{{ item.image.url }}" alt="{{ item.name }}"><div>{{ item.name }}</div></td>
+                      <td>UGX {{ item.price }}</td>
+                      <td class="quantity">
+                        <div class="quantity-controls" data-item-id="{{ item.id }}" data-item-quantity="{{ item.quantity }}">
+                            <button type="button" class="quantity-btn decrease">-</button>
+                            <input type="number" class="quantity-input" value="{{ item.quantity }}" min="1" max="100">
+                            <button type="button" class="quantity-btn increase">+</button>
+                        </div>
+                    </td>                    
+                      <td>UGX {{ item.total_price }}</td>
+                      <td><a href="{% url 'remove_from_cart' item.id %}">Remove</a></td>
+                  </tr>
+              {% empty %}
+                  <tr><td colspan="5">Your cart is empty.</td></tr>
+              {% endfor %}
+          {% else %}
+              <tr><td colspan="5">Your cart is empty.</td></tr>
+          {% endif %}
+      </tbody>
+      
+      </table>
+
+    </div>
+  </div>
+
+  <!-- Cart Summary -->
+  <div class="summary-container">
+    <div class="summary-list">
+      <div class="summary-item">
+        <div class="name summary-box">Sub Total</div>
+        <div class="value summary-box" id="sub-total">UGX {{ sub_total }}</div>
+      </div>
+      <div class="summary-item">
+        <div class="name summary-box">Shipping</div>
+        <div class="value summary-box" id="shipping-cost">UGX {{ shipping_cost }}</div>
+      </div>
+      <div class="summary-item">
+        <div class="name summary-box">Discount</div>
+        <div class="value summary-box" id="discount">-UGX {{ discount }}</div>
+      </div>
+      <div class="summary-item">
+        <div class="name summary-box">Total</div>
+        <div class="value summary-box" id="total">UGX {{ total }}</div>
+      </div>
+    </div>
+
+    <div class="checkout">
+      <a href="{% url 'checkout' %}" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+  </div>
+
+</section>
+<!-- ==================== Cart Area (End) ==================== -->
+
+<script src="{% static 'js/quantity-controls.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+
+{% endblock %}

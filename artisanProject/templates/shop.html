@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block title %}
     shop
@@ -7,19 +7,224 @@
 {% load static %}
 
 {% block content %}
-<form method="get" class="o_searchbar_form" action="/shop">
-    <div role="search" class="input-group" style="max-width: 500px; margin: 0 auto; display: flex;"> <!-- Ensure flex container for proper alignment -->
-        <!-- Search Input -->
-        <input type="search" name="search" class="form-control search-query" placeholder="Search products..." aria-label="Search Products" style="height: 50px; border-top-right-radius: 0; border-bottom-right-radius: 0; flex-grow: 1;"> <!-- Flex-grow ensures input takes full width -->
-        <!-- Search Button with Icon at the End -->
-        <button type="submit" aria-label="Search" class="btn btn-light" style="height: 50px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
-            <i class="icon fa-solid fa-magnifying-glass"></i> <!-- Search icon -->
-        </button>
+
+
+
+
+  <!-- ==================== Page-Title (Start) ==================== -->
+  <div class="page-title">
+
+
+
+  </div>
+  <!-- ==================== Page-Title (End) ==================== -->
+
+
+
+ 
+<section class="shop">
+
+    <!-- ========== Shop Sidebar Area (Start) ========== -->
+    <div class="sidebar">
+    
+        <!-- ===== Category Area (Start) ===== -->
+        <div class="category sidebar-item">
+    
+          <!-- Sidebar Heading: Categories -->
+          <div class="sidebar-heading">
+            <h2>categories</h2>
+          </div> 
+    
+          <!-- Shop Categories -->
+          <div class="box-container">
+            <a href="#" class="item"> <span><i class="fa-solid fa-building-columns"></i>All Products</span> <p></p> </a>
+            <a href="#" class="item"> <span><i class="fa-solid fa-building-columns"></i>Art Prints</span> <p></p> </a>
+            <a href="#" class="item"> <span><i class="fa-solid fa-building-columns"></i>Jewelry Boutique</span> <p></p> </a>
+            <a href="#" class="item"> <span><i class="fa-solid fa-building-columns"></i>Books & Journals:</span> <p></p> </a>
+            <a href="#" class="item"> <span><i class="fa-solid fa-building-columns"></i>Home Decor</span> <p></p> </a>
+            <a href="#" class="item"> <span><i class="fa-solid fa-building-columns"></i>Fashion Accessories:</span> <p></p> </a>
+          </div>
+    
+        </div>
+        <!-- ===== Category Area (End) ===== -->
+    
+        <!-- ===== Filter Products (Start) ===== -->
+        <div class="filter sidebar-item">
+    
+          <!-- Sidebar Heading: Filter Products -->
+          <div class="sidebar-heading">
+            <h2>Product Filter</h2> 
+          </div>
+    
+          <div class="box-container">
+            <!-- Slider -->
+            <div class="slider">
+              <div class="progress"></div>
+            </div>
+            <!-- Range Input -->
+            <div class="range-input">
+              <input type="range" class="range-min" min="0" max="1000" value="250" step="10">
+              <input type="range" class="range-max" min="0" max="1000" value="750" step="10">
+            </div>
+            <!-- Price Wrap -->
+            <div class="price-wrap">
+              <!-- Price Input -->
+              <div class="price-input">
+                <!-- Minimum Price Field -->
+                <div class="field">
+                  <span>UGX</span>
+                  <input type="number" class="input-min" value="250">
+                </div>
+                <!-- Separator -->
+                <div class="separator">-</div>
+                <!-- Maximum Price Field -->
+                <div class="field">
+                  <span>UGX</span>
+                  <input type="number" class="input-max" value="750">
+                </div>
+              </div>
+              <!-- Filter Button -->
+              <span class="btn">FILTER</span>
+            </div>
+          </div>
+        </div>
+        <!-- ===== Filter Products (End) ===== -->
+    
+        <!-- ===== Popular Products Area (Start) ===== -->
+        <div class="popular-products sidebar-item">
+    
+          <!-- Sidebar Heading: Popular Products -->
+          <div class="sidebar-heading">
+            <h2>popular products</h2>
+          </div>
+    
+          <!-- Popular Products -->
+          <div class="box-container"> 
+    
+            <!-- Popular Product 1 -->
+            <div class="post-item">
+              <img src="../../assets/images/Shop/Products/Product-1.jpg" alt="Diamond Brooch"> <!-- Product Image -->
+              <div class="content">
+                <a href="Product-Single.html">Diamond Brooch</a> <!-- Product Title -->
+                <div class="price">
+                  <p>UGX40.00 <span>UGX50.00</span></p> <!-- Product Price -->
+                </div>
+              </div>
+            </div>
+    
+            <!-- Popular Product 2 -->
+            <div class="post-item">
+              <img src="../../assets/images/Shop/Products/Product-3.jpg" alt="Wall Clock"> <!-- Product Image -->
+              <div class="content">
+                <a href="Product-Single.html">Wall Clock</a> <!-- Product Title -->
+                <div class="price">
+                  <p>UGX40.00 <span>UGX50.00</span></p> <!-- Product Price -->
+                </div>
+              </div>
+            </div>
+    
+            <!-- Popular Product 3 -->
+            <div class="post-item">
+              <img src="../../assets/images/Shop/Products/Product-5.jpg" alt="Ceramic Vase"> <!-- Product Image -->
+              <div class="content">
+                <a href="Product-Single.html">Ceramic Vase</a> <!-- Product Title -->
+                <div class="price">
+                  <p>UGX40.00 <span>UGX50.00</span></p> <!-- Product Price -->
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    
+        </div>
+        <!-- ===== Popular Products Area (End) ===== -->
+    
+      </div>
+      <!-- ========== Shop Sidebar Area (End) ========== -->
+    
+      <div class="shop-container">
+      <!-- ===== Shop Header (Start) ===== -->
+      <div class="intro">
+    
+        <!-- Showing Products Count -->
+        <div class="showing">showing 8 of 10 products</div>
+    
+        <!-- Display Styles -->
+     <!-- Display Styles -->
+     <div class="styles">
+        <a href="{% url 'shop_grid'%}" class="fas fa-th"></a>
+        <a href="{% url 'shop_list'%}" class="fas fa-list"></a>               
+      </div>
+    
+        <!-- Sorting Type -->
+        <div class="sorting-type">
+    
+          <!-- Sorting Label -->
+          <label for="sort">sort by:</label>
+    
+          <!-- Sorting Options -->
+          <select name="sort" id="sort">
+            <option value="default">default</option>
+            <option value="name, A to Z">name, A to Z</option>
+            <option value="mname, Z to A">name, Z to A</option>
+            <option value="price, low to high">price, low to high</option>
+            <option value="price, high to low">price, high to low</option>
+          </select>
+    
+        </div>
+    
+      </div> 
+      <!-- ===== Shop Header (End) ===== -->
+    
+      <!-- Product List -->
+<div class="product-container list">
+  {% for product in products %}
+  <div class="product-item">
+      <!-- Product Image and Options -->
+      <div class="image">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          <div class="options">
+              <a href="{% url 'wishlist'%}" class="icon"><i class="far fa-heart"></i></a>
+              <a href="{% url 'cart'%}" class="icon"><i class="fa-solid fa-cart-shopping"></i></a>
+
+              <!-- Add to Cart Form -->
+              <form action="{% url 'add_to_cart' product.id %}" method="post" style="display:inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="icon" style="background: none; border: none;">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                  </button>
+              </form>
+
+              <a href="" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+          </div>
+      </div>
+
+      <!-- Product Content -->
+      <div class="content mt-3">
+          <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+          </div>
+          <a href=""><h3>{{ product.name }}</h3></a>
+          <p>{{ product.description }}</p>
+          <div class="price">UGX {{ product.price }} <span>UGX {{ product.price|floatformat:2 }}</span></div>
+      </div>
+  </div>
+  {% empty %}
+  <div class="col-12 text-center">
+      <p>No products available yet.</p>
+  </div>
+        {% endfor %}
     </div>
-    <!-- Hidden Input for Sorting -->
-    <input name="order" type="hidden" value="name asc">
-</form>
+      </div>
+    </div>
+    </section>
+    
+    <script src="{% static 'assets/js/quantity-controls.js' %}"></script>
 
-
-
+ 
 {% endblock %}
+
