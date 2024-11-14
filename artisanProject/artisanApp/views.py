@@ -70,7 +70,7 @@ def add_product(request):
             return redirect('artisan_dashboard')
     else:
         form = ProductForm()
-    return render(request, 'artisan/add_product.html', {'form': form})
+    return render(request, 'Artisan/Add_product.html', {'form': form})
 
 @login_required
 def manage_orders(request):
