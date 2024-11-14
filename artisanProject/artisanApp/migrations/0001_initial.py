@@ -2,7 +2,10 @@
 
 import django.contrib.auth.models
 import django.contrib.auth.validators
+import django.contrib.auth.models
+import django.contrib.auth.validators
 import django.db.models.deletion
+import django.utils.timezone
 import django.utils.timezone
 from django.conf import settings
 from django.db import migrations, models
@@ -13,6 +16,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('auth', '0012_alter_user_first_name_max_length'),
         ('auth', '0012_alter_user_first_name_max_length'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
@@ -75,6 +79,11 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(upload_to='products/')),
                 ('seller', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='products', to=settings.AUTH_USER_MODEL)),
             ],
+        ),
+        migrations.AddField(
+            model_name='cartitem',
+            name='product',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='artisanApp.product'),
         ),
         migrations.AddField(
             model_name='cartitem',

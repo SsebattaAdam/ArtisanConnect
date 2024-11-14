@@ -7,6 +7,12 @@ from .forms import SellerRegistrationForm, ProductForm, RegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
+from .models import Product
+from .forms import SellerRegistrationForm, ProductForm, RegistrationForm
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.contrib.auth import authenticate, login as auth_login
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from artisanApp.models import CustomUser  # Ensure your CustomUser model is imported
@@ -27,6 +33,7 @@ def home(request):
    
 def home2(request):
     return render(request, 'base2.html') 
+ 
  
 def about_us(request):
     return render(request, 'aboutUs.html')
@@ -267,4 +274,3 @@ def get_started(request):
         form = RegistrationForm()
     
     return render(request, 'getStarted.html', {'form': form})
-
